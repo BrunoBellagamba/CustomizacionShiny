@@ -1,0 +1,25 @@
+---
+title: "<span style="color:#88398A"> shiny III </span>"
+author: "<span style="color:#88398A"> <font size="6"> \@STA_NT</span></font>"
+date: "<span style="color:#88398A"> 4 de Junio, 2018"
+output:
+  beamer_presentation: default
+  ioslides_presentation: default
+logo: logoclass.png
+widescreen: no
+---
+
+ <style>
+ .title-slide {
+     background-image: url(logo.png);
+     background-repeat: no-repeat;
+     padding:40px;
+     background-position: 90% 80%;
+     background-size: 200px 200px;
+   }
+   </style>
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+## <span style="color:#88398A">Titulo</span>
