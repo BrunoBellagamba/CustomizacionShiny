@@ -1,0 +1,32 @@
+---
+title: "Borrador"
+author: "Bruno Bellagamba"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+##Introduccion
+Ya observamos anteriormente como contruir aplicaciones shiny a base de utilizar una interfaz(ui) que nos describa los inputs y outputs que queremos mostrar y un server que conecte estos a base de codigo de R.
+
+Pero una vez que tenemos nuestra aplicacion, nos puede interesar que la aplicacion se vea mejor y mas ordenada.
+
+Para esto veremos como mover los elementos dentro de la shiny asi como dividirla en paneles,pestaÃ±as y posiciones con el fin de que el resultado finl sea mas "lindo" de ver.
+
+Antes de esto veremos primero lo que son los elementos estaticos.
+
+##Elementos estaticos
+Los elementos estaticos son contenido que se puede agregar a la shiny que no necesita de reactividad o interactividad(puede ser texto,imagenes,url,etc).
+Como en el fondo de todo lo que estamos haciendo es una conversion de codigo R a codigo HTML,vamos a utilizar un grupo de funciones llamadas tags que nos permitirarn añadir este tipo de elementos estaticos a nuestra shiny.
+Este conjunto de funciones tags nos permitiran entre otras cosas:
+  -Cambiar el tamaño de texto(h1,h2,h3,h4...)
+  -Añadir distintas fuentes(
+  -Agregar imagenes
+  -Crear hipervinculos de paginas webs(links)
+Todas estas acciones se pueden combinar simultaneamente.
+(Mostrar ejelementosestaticos)
+
+
+##Layouts
+

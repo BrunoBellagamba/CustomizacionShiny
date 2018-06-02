@@ -11,7 +11,6 @@ ui<-fluidPage(
                        max = 100, value = c(40, 60))
     )
   ),
-  ####Una linea gris horizontal
   hr(),
   
   fluidRow(
