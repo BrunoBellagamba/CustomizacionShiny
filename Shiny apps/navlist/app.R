@@ -10,7 +10,7 @@ ui<-fluidPage(
              h3("Primer panel")
     ),
     tabPanel("2",
-             h3("Segundo paneñ")
+             h3("Segundo panel")
     ),
     tabPanel("3",
              h3("Tercer panel")

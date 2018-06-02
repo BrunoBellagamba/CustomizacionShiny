@@ -13,15 +13,15 @@ Ya observamos anteriormente como contruir aplicaciones shiny a base de utilizar 
 Pero una vez que tenemos nuestra aplicacion, nos puede interesar que la aplicacion se vea mejor y mas ordenada.
 
 Para esto veremos como mover los elementos dentro de la shiny asi como dividirla en paneles,pesta√±as y posiciones con el fin de que el resultado finl sea mas "lindo" de ver.
-
+Todo esto lo realizaremos a travez de la interfaz en la shiny(ui) utilizando distintas funciones, el server no juega un papel en la customizacion.
 Antes de esto veremos primero lo que son los elementos estaticos.
 
 ##Elementos estaticos
 Los elementos estaticos son contenido que se puede agregar a la shiny que no necesita de reactividad o interactividad(puede ser texto,imagenes,url,etc).
-Como en el fondo de todo lo que estamos haciendo es una conversion de codigo R a codigo HTML,vamos a utilizar un grupo de funciones llamadas tags que nos permitirarn aÒadir este tipo de elementos estaticos a nuestra shiny.
+Como en el fondo de todo lo que estamos haciendo es una conversion de codigo R a codigo HTML,vamos a utilizar un grupo de funciones llamadas tags que nos permitirarn a?adir este tipo de elementos estaticos a nuestra shiny.
 Este conjunto de funciones tags nos permitiran entre otras cosas:
-  -Cambiar el tamaÒo de texto(h1,h2,h3,h4...)
-  -AÒadir distintas fuentes(
+  -Cambiar el tama?o de texto(h1,h2,h3,h4...)
+  -A?adir distintas fuentes(
   -Agregar imagenes
   -Crear hipervinculos de paginas webs(links)
 Todas estas acciones se pueden combinar simultaneamente.
@@ -29,4 +29,20 @@ Todas estas acciones se pueden combinar simultaneamente.
 
 
 ##Layouts
+Los layouts nos determinan las posiciones de los elementos de la shiny, lo cual nos permite ordenarlos a voluntad.
+La manera en la que funcionan es dividiendo el espacio de la shiny en filas y columnas controlando el largo y ancho de cada una.
+Para crear una fila utilizamos fluidRow() y las columnas las generamos dentro de las filas con column(), el primer argumento dentro de las columnas definira el grosor de esta(este grosor va desde un minimo de 1 a un maximo de 12,el total de columnas en una fila no puede sobrepasar el grosor de 12 total) y el segundo argumento es la cantidad de espacios que se quiere dejar antes del elemento.
+Basicamente, fluidRow() genera una fila y column() genera columnas dentro de la fila.
+(Mostrar ejemplo filascolumnas)
+
+##Paneles
+Los paneles son una manera de agrupar los elementos seleccionados con un dise√±o especifico, a diferencia de los layouts no controlan la posicion de los elementos sino solo con que estan agrupados.
+Hay una gran variedad de paneles a usar, desde agruparlos con un color de fondo distinto, hasta usando pesta√±as o solapas para separar cada grupo de elementos.
+Los que parecen mas utiles son:
+  -titlePanel() o headerPanel,que es un panel para el titulo de la app
+  -mainPanel(),que es para los outputs de la shiny
+  -sidebarPanel(),que muestra los inputs
+Estos ultimos necesitan utilizar pageWithSidebar() previamente.
+
+
 

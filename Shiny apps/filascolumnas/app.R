@@ -16,6 +16,10 @@ ui<-fluidPage(
   fluidRow(
     column(4, verbatimTextOutput("value")),
     column(4, verbatimTextOutput("range"))
+  ),
+  fluidRow(
+    column(4,offset = 8,"Este texto esta a la derecha"),
+    column(4,"Este texto esta a la izquierda")
   )
   
 )
