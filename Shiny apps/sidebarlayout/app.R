@@ -10,13 +10,13 @@ ui<-(fluidPage(
     ),
     
     mainPanel(
-      plotOutput("distPlot")
+      plotOutput("hist")
     )
   )
 ))
-server<-function(input,output){
-  output$distPlot<-renderPlot(
-    dat<- data.frame(normales=rnorm(input$obs),
-    ggplot(dat,aes(normales)) + geom_histogram()))
+server <- function(input, output){
+  output$hist <- renderPlot({
+    dat<- data.frame(normales=rnorm(input$obs))
+    ggplot(dat,aes(normales)) + geom_histogram()})
 }
 shinyApp(ui,server)

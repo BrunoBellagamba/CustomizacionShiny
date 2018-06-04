@@ -16,6 +16,6 @@ ui <- fluidPage(
   tags$p(tags$code("ERROR 420 EMPEZANDO AUTODESTRUCCION")),
   tags$img(height=1000,width=1000,src="http://www.onlygfx.com/wp-content/uploads/2017/01/comic-boom-explosion-2-1017x1024.png")
 )
-server <- function(input, output)
+server <- function(input, output){}
 shinyApp(ui = ui, server = server)
   

@@ -21,46 +21,223 @@ widescreen: no
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
 
-## <span style="color:#88398A">Introduccion</span>
+## <span style="color:#88398A">Introducción</span>
 
 Ya observamos anteriormente como contruir aplicaciones shiny a base de utilizar una interfaz (`ui`) que nos describa los inputs y outputs que queremos mostrar y un server que conecte estos a base de código de R.
 
-Pero una vez que tenemos nuestra aplicacion, nos puede interesar que la aplicacion se vea mejor y mas ordenada.
+Pero una vez que tenemos nuestra aplicación, nos puede interesar que la aplicación se vea mejor y más ordenada.
 
-Para esto veremos como mover los elementos dentro de la shiny asi como dividirla en paneles,pestañas y posiciones con el fin de que el resultado finl sea mas "lindo" de ver.
-Todo esto lo realizaremos a travez de la interfaz en la shiny(ui) utilizando distintas funciones, el server no juega un papel en la customizacion.
-Antes de esto veremos primero lo que son los elementos estaticos.
+
+## <span style="color:#88398A">Introducción</span>
+
+- Para esto veremos como mover los elementos dentro de la `shiny` así como dividirla en paneles, pestañas y posiciones con el fin de que el resultado final sea más "lindo" de ver.
+
+- Todo esto lo realizaremos a través de la interfaz en la shiny (`ui`) utilizando distintas funciones, el `server` no juega un papel en la personalización.
+
+- Antes de esto veremos primero lo que son los elementos estáticos.
 
 ## <span style="color:#88398A">Elementos estáticos</span>
 
-Los elementos estaticos son contenido que se puede agregar a la shiny que no necesita de reactividad o interactividad(puede ser texto,imagenes,url,etc).
-Como en el fondo de todo lo que estamos haciendo es una conversion de codigo R a codigo HTML,vamos a utilizar un grupo de funciones llamadas tags que nos permitirarn a?adir este tipo de elementos estaticos a nuestra shiny.
-Este conjunto de funciones tags nos permitiran entre otras cosas:
-  -Cambiar el tama?o de texto(h1,h2,h3,h4...)
-  - Añadir distintas fuentes(
-  - Agregar imagenes
-  - Crear hipervinculos de paginas webs(links)
+Los elementos estáticos son contenidos que se puede agregar a la `shiny` que no necesitan de reactividad o interactividad (pueden ser texto, imagenes, url, etc).
+
+Como en el fondo de todo lo que estamos haciendo es una conversión de código R a código HTML, vamos a utilizar un grupo de funciones llamadas `tags` que nos permitirán añadir este tipo de elementos estáticos a nuestra `shiny`.
+
+
+## <span style="color:#88398A">Elementos estáticos</span>
+
+Este conjunto de funciones `tags` nos permitirán entre otras cosas:
+
+  - Cambiar el tamaño de texto(h1,h2,h3,h4...)
+  - Añadir distintas fuentes
+  - Agregar imágenes
+  - Crear hipervinculos de páginas webs(links)
+
 Todas estas acciones se pueden combinar simultaneamente.
+
 (Mostrar ejelementosestaticos)
 
+## <span style="color:#88398A">Elementos estáticos `ui`</span>
+```{r,eval=FALSE,echo=TRUE}
+ui <- fluidPage(
+  "Este es un texto común y corriente, le podemos cambiar el tamaño utilizando
+  los tags h1() - h6()",
+  tags$h1("Este es un texto grande"),
+  tags$h2("Este es un texto algo grande"),
+  tags$h3("Este es un texto mediano"),
+  tags$h6("Este es un texto chiquito"),
+  "Podemos añadir un link con el tag a()",
+  tags$a(href="https://www.google.com.uy/","Si me das click voy a google"),
+  tags$p("Tambien podemos escribir usando parrafos"),
+  tags$p("Utilizando el tag p()"),
+  tags$em("Este es un texto mas lindo en italica"),
+  tags$br(),
+  tags$hr(),
+  tags$p(tags$code("ERROR 420 EMPEZANDO AUTODESTRUCCION")),
+  tags$img(height=1000,width=1000,src="http://www.onlygfx.com/wp-content/uploads/2017/01/comic-boom-explosion-2-1017x1024.png")
+)
+```
+
+## <span style="color:#88398A">Elementos estáticos `ui`</span>
+```{r,eval=FALSE,echo=TRUE}
+server <- function(input, output){}
+shinyApp(ui = ui, server = server)
+```
+  
+## <span style="color:#88398A">Elementos estáticos `ui`</span>
+<!-- Para las `tags` más comunes es equivalente `tags$h1()` que `h1()` -->
+```{r,eval=FALSE,echo=TRUE}
+ui <- fluidPage(
+  "Este es un texto común y corriente, le podemos cambiar el tamaño utilizando
+  los tags h1() - h6()",
+  h1("Este es un texto grande"),
+  h2("Este es un texto algo grande"),
+  h3("Este es un texto mediano"),
+  h6("Este es un texto chiquito"),
+  "Podemos añadir un link con el tag a()",
+  a(href="https://www.google.com.uy/","Si me das click voy a google"),
+  p("Tambien podemos escribir usando parrafos"),
+  p("Utilizando el tag p()"),
+  em("Este es un texto mas lindo en italica"),
+  br(),
+  hr(),
+  p(code("ERROR 420 EMPEZANDO AUTODESTRUCCION")),
+  img(height=1000,width=1000,src="http://www.onlygfx.com/wp-content/uploads/2017/01/comic-boom-explosion-2-1017x1024.png")
+)
+```
+## <span style="color:#88398A">Layouts</span>
+
+Los layouts nos determinan las posiciones de los elementos de la `shiny`, lo cual nos permite ordenarlos a voluntad.
+
+La manera en la que funcionan es dividiendo el espacio de la `shiny` en filas y columnas controlando el largo y ancho de cada una.
+
+## <span style="color:#88398A">Layouts</span>
+- Para crear una fila utilizamos `fluidRow()` 
+
+- Las columnas las generamos dentro de las filas con `column()`,el primer argumento dentro de las columnas definirá el grosor de esta (este grosor va desde un mínimo de 1 a un máximo de 12,el total de columnas en una fila no puede sobrepasar el grosor de 12 total) y el segundo argumento es la cantidad de espacios que se quiere dejar antes del elemento.
+
+- Basicamente, `fluidRow()` genera una fila y `column()` genera columnas dentro de la fila.
+
+## <span style="color:#88398A">Layouts</span>
+```{r,eval=FALSE,echo=TRUE}
+ui <- fluidPage(
+  fluidRow(
+    column(2),
+    column(6)),
+  fluidRow(
+    column(8),
+    column(4))
+  )
+  
+
+
+```
 
 ## <span style="color:#88398A">Layouts</span>
 
-Los layouts nos determinan las posiciones de los elementos de la shiny, lo cual nos permite ordenarlos a voluntad.
-La manera en la que funcionan es dividiendo el espacio de la shiny en filas y columnas controlando el largo y ancho de cada una.
-Para crear una fila utilizamos fluidRow() y las columnas las generamos dentro de las filas con column(), el primer argumento dentro de las columnas definira el grosor de esta(este grosor va desde un minimo de 1 a un maximo de 12,el total de columnas en una fila no puede sobrepasar el grosor de 12 total) y el segundo argumento es la cantidad de espacios que se quiere dejar antes del elemento.
-Basicamente, fluidRow() genera una fila y column() genera columnas dentro de la fila.
+ Existen layouts ya creados por la comunidad que sirven como estructura básica para las `shiny`.
+
 (Mostrar ejemplo filascolumnas)
+
+## <span style="color:#88398A">Layouts `ui`</span>
+```{r,echo=TRUE,eval=FALSE}
+ui <- fluidPage(
+  fluidRow(
+    column(8, sliderInput("Barrita1", label = h3("Barrita 1"), min = 0, 
+                       max = 100, value = 50)),
+    column(3, sliderInput("Barrita2", label = h3("Barrita 2"), min = 0, 
+                       max = 100, value = c(40, 60)) )),
+   hr(),
+  fluidRow(
+    column(4, verbatimTextOutput("value")),
+    column(8, verbatimTextOutput("range"))
+  ),
+  fluidRow(
+    column(4,offset = 8,"Este texto esta a la derecha"),
+    column(4,"Este texto esta a la izquierda")
+  )
+)
+
+```
+## <span style="color:#88398A">Layouts `server`</span>
+```{r, echo=TRUE,eval=FALSE}
+server<-function(input, output) {
+  
+  output$value <- renderPrint({ input$Barrita1 })
+  
+  output$range <- renderPrint({ input$Barrita2 })
+}
+shinyApp(ui, server)
+
+```
+## <span style="color:#88398A">Paneles</span>
+
+Los paneles son una manera de agrupar los elementos seleccionados con un diseño específico, a diferencia de los layouts no controlan la posición de los elementos sino solo con que están agrupados.
+
+Hay una gran variedad de paneles a usar, desde agruparlos con un color de fondo distinto, hasta usando pestañas o solapas para separar cada grupo de elementos.
 
 ## <span style="color:#88398A">Paneles</span>
 
-Los paneles son una manera de agrupar los elementos seleccionados con un diseño especifico, a diferencia de los layouts no controlan la posicion de los elementos sino solo con que estan agrupados.
-Hay una gran variedad de paneles a usar, desde agruparlos con un color de fondo distinto, hasta usando pestañas o solapas para separar cada grupo de elementos.
-Los que parecen mas utiles son:
-  -titlePanel() o headerPanel,que es un panel para el titulo de la app
-  -mainPanel(),que es para los outputs de la shiny
-  -sidebarPanel(),que muestra los inputs
-Estos ultimos necesitan utilizar pageWithSidebar() previamente.
+Los que parecen más útiles son:
+
+- `titlePanel()` o `headerPanel()`,que es un panel para el título de la app
+- `mainPanel()`, que es para los outputs de la `shiny`
+- `sidebarPanel()`, que muestra los inputs
+Estos últimos necesitan utilizar `pageWithSidebar()` previamente.
+
+## <span style="color:#88398A">Paneles apilados</span>
+Este tipo de paneles son los usados para generar pestañas, donde cada pestaña se crea utilizando `tabPanel()`.Esta pestaña funciona como si fuera un mini `ui` en el que se puede colocar `inputs` y `outputs`, con el único requerimiento de que se le debe dar un nombre.
+
+Para tener una manera de navegar entre las pestañas, podemos usar tanto `tabsetsPanel()` como `navlistPanel()`.
+
+
+## <span style="color:#88398A">Paneles apilados</span>
+```{r, eval=FALSE,echo=TRUE}
+
+ui <- fluidPage(
+  titlePanel("Ejemplo de Tabset"),
+  tabsetPanel(
+    tabPanel("Pestaña 1","Aqui colocamos lo que queremos en la pestaña 1 "),
+    tabPanel("Pestaña 2","Aqui colocamos lo que queremos en la pestaña 2 "),
+    tabPanel("Pestaña 3","Aqui colocamos lo que queremos en la pestaña 3 ")
+  )
+)
+server <- function(input, output){}
+shinyApp(ui = ui, server = server)
+
+
+```
+
+## <span style="color:#88398A">Paneles apilados </span>
+```{r, eval=FALSE,echo=TRUE}
+
+ui<-fluidPage(
+  titlePanel("Ejemplo de Navlist"),
+  navlistPanel(
+    "Nro de panel",
+    tabPanel("1",
+             h3("Primer panel")
+    ),
+    tabPanel("2",
+             h3("Segundo panel")
+    ),
+    tabPanel("3",
+             h3("Tercer panel")
+    )
+  )
+)
+
+server<-function(input, output) {
+  
+}
+
+shinyApp(ui, server)
+
+```
+
+## <span style="color:#88398A">Más ejemplos </span>
+
+
+
 
 
 

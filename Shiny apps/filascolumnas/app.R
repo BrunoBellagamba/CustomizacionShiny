@@ -2,11 +2,11 @@
 
 ui<-fluidPage(
   fluidRow(
-    column(4,
+    column(8,
            sliderInput("Barrita1", label = h3("Barrita 1"), min = 0, 
                        max = 100, value = 50)
     ),
-    column(4,
+    column(3,
            sliderInput("Barrita2", label = h3("Barrita 2"), min = 0, 
                        max = 100, value = c(40, 60))
     )
@@ -15,7 +15,7 @@ ui<-fluidPage(
   
   fluidRow(
     column(4, verbatimTextOutput("value")),
-    column(4, verbatimTextOutput("range"))
+    column(8, verbatimTextOutput("range"))
   ),
   fluidRow(
     column(4,offset = 8,"Este texto esta a la derecha"),
