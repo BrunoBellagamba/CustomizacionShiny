@@ -47,7 +47,7 @@ Como en el fondo de todo lo que estamos haciendo es una conversión de código R
 
 Este conjunto de funciones `tags` nos permitirán entre otras cosas:
 
-  - Cambiar el tamaño de texto(h1,h2,h3,h4...)
+  - Cambiar el tamaño de texto(h1, h2, h3, h4, ...)
   - Añadir distintas fuentes
   - Agregar imágenes
   - Crear hipervinculos de páginas webs(links)
@@ -77,14 +77,14 @@ ui <- fluidPage(
 )
 ```
 
-## <span style="color:#88398A">Elementos estáticos `ui`</span>
+## <span style="color:#88398A">Elementos estáticos `server`</span>
 ```{r,eval=FALSE,echo=TRUE}
 server <- function(input, output){}
 shinyApp(ui = ui, server = server)
 ```
   
-## <span style="color:#88398A">Elementos estáticos `ui`</span>
-<!-- Para las `tags` más comunes es equivalente `tags$h1()` que `h1()` -->
+## <span style="color:#88398A">Elementos estáticos `ui` </span>
+  <!-- Para las `tags` más comunes es equivalente `tags$h1()` que `h1()` -->
 ```{r,eval=FALSE,echo=TRUE}
 ui <- fluidPage(
   "Este es un texto común y corriente, le podemos cambiar el tamaño utilizando
@@ -113,7 +113,7 @@ La manera en la que funcionan es dividiendo el espacio de la `shiny` en filas y 
 ## <span style="color:#88398A">Layouts</span>
 - Para crear una fila utilizamos `fluidRow()` 
 
-- Las columnas las generamos dentro de las filas con `column()`,el primer argumento dentro de las columnas definirá el grosor de esta (este grosor va desde un mínimo de 1 a un máximo de 12,el total de columnas en una fila no puede sobrepasar el grosor de 12 total) y el segundo argumento es la cantidad de espacios que se quiere dejar antes del elemento.
+- Las columnas las generamos dentro de las filas con `column()`, el primer argumento dentro de las columnas definirá el grosor de esta (este grosor va desde un mínimo de 1 a un máximo de 12, el total de columnas en una fila no puede sobrepasar el grosor de 12 total) y el segundo argumento es la cantidad de espacios que se quiere dejar antes del elemento.
 
 - Basicamente, `fluidRow()` genera una fila y `column()` genera columnas dentro de la fila.
 
